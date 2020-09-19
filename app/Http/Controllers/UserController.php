@@ -10,23 +10,26 @@ class UserController extends Controller
 
     public function index()
     {
-        return User::orderBy('id','desc')->get();
+        $users =  User::orderBy('id','desc')->get();
+        return response()->json(compact('users'));
     }
 
 
     public function store(Request $request)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->name),
         ]);
+
+        return response()->json(compact('user'));
     }
 
 
     public function show($id)
     {
-        return User::find($id);
+         User::find($id);
     }
 
 

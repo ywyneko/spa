@@ -26,14 +26,14 @@
                     <button type="submit" class="btn btn-primary" @click="store">Add User</button>
             </div>
             <div class="col-md-8">
-                <table class="table table-striped">
+                <table class="table">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Action</th>
                     </tr>
-                    <tr v-for="user in users">
+                    <tr v-for="user in users" >
                         <td>    @{{user.id}} </td>
                         <td>    @{{user.name}}</td>
                         <td>    @{{user.email}}</td>
@@ -48,6 +48,8 @@
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+    </script>
     <script>
         new Vue({
             el : "#app",
@@ -71,7 +73,7 @@
                     let user = {
                         name : this.user.name,
                         email : this.user.email,
-                        address : this.user.address,
+                        password : this.user.password,
                     }
                     axios.post('/api/user',{
                         name : user.name,
